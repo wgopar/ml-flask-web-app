@@ -11,7 +11,7 @@ ml-flask-web-app
 │   └── vectorizer.pkl
 ├── model_dev
 │   ├── data
-│       └── data.json
+│   |   └── data.json
 │   └── model_dev.ipynb
 ├── templates
 │   └── index.html

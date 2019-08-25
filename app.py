@@ -4,36 +4,38 @@ import pickle
 import os
 
 app = Flask(__name__)
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    """ Main webpage with user input through form and prediction displayed
 
+    :return: main webpage host, displays prediction if user submitted in text field
+    """
 
-@app.route('/', methods=['POST'])
-def predict():
+    if request.method == 'POST':
 
-    response = request.json
+        # prepare input text
+        response = request.form['text']
+        input_text = clean_text(response)
 
-    # load vectorizer
-    vectorizer_path = os.path.join(os.getcwd(), 'model_assets', 'vectorizer_test_v.0.0.pkl')
-    vectorizer = pickle.load(open(vectorizer_path, 'rb'))
+        # load vectorizer and transform input text
+        vectorizer_path = os.path.join(os.getcwd(), 'model_assets', 'vectorizer_test_v.0.0.pkl')
+        vectorizer = pickle.load(open(vectorizer_path, 'rb'))
+        input_text = vectorizer.transform([input_text])
 
-    # clean input text and transform
-    filtered_text = clean_text(response['data'])
-    input_text = vectorizer.transform([filtered_text])
+        # load model
+        model_path = os.path.join(os.getcwd(), 'model_assets', 'model_test_v.0.0.pkl')
+        model = pickle.load(open(model_path, 'rb'))
 
-    # load model
-    model_path = os.path.join(os.getcwd(), 'model_assets', 'model_test_v.0.0.pkl')
-    model = pickle.load(open(model_path, 'rb'))
+        # predict
+        prediction = model.predict(input_text)
+        prediction = 'Cyber-Troll' if prediction[0] == 1 else 'Non Cyber-Troll'
 
-    # predict
-    prediction = model.predict(input_text)
-    prediction = 'Cyber-Troll' if prediction[0] == 1 else 'Non Cyber-Troll'
+        return render_template('index.html', text=prediction, submission=response)
 
-    return render_template('index.html', text=prediction)
+    if request.method == 'GET':
+        return render_template('index.html')
 
 
 if __name__ == '__main__':
