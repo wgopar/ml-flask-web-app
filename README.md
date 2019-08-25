@@ -1,7 +1,11 @@
-# ml-flask-web-app
+# ml-flask-web-app 
+
+
 
 This is a simple web application using flask for interaction with a machine learning model
 and obtain predictions from user input.  
+
+(In progress...)
   
 
 ## Installation
