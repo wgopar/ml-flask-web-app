@@ -18,7 +18,7 @@ python3 -m venv ./venv
 
 Activate the virtual environment.
 ~~~bash
-source here/bin/activate
+source venv/bin/activate
 ~~~
 
 While in the virtual envirobment, install required dependences from `requirements.txt`.
