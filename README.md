@@ -1,11 +1,9 @@
 # ml-flask-web-app 
 
-
-
-This is a simple web application using flask for interaction with a machine learning model
-and obtain predictions from user input.  
-
-(In progress...)
+This is a simple flask application that acts as an Internet Cyber Troll Detector. Using the
+Dataset for Detection of Cyber-Trolls ([here](https://dataturks.com/projects/abhishek.narayanan/Dataset%20for%20Detection%20of%20Cyber-Trolls/))
+a binary classifier was fitted to detect whether an online comment is is a `Cyber-Troll` or `Non Cyber-Troll`. This application
+acts as an interface to allow any user to submit new queries to this model. 
   
 
 ## Installation
@@ -25,7 +23,7 @@ Activate the virtual environment.
 source venv/bin/activate
 ~~~
 
-While in the virtual envirobment, install required dependences from `requirements.txt`.
+While in the virtual environment, install required dependencies from `requirements.txt`.
 
 ~~~bash
 pip install -r ./requirements.txt
@@ -63,3 +61,13 @@ ml-flask-web-app
 ├── requirements.txt
 └── README.md
 ~~~
+
+
+### detailed
+
+`/model_assets` is used to store persisted states of the predictive model and learned feature extractors from scikit-learn. 
+
+`/model_dev` is used as the model development playground where an `.ipynb` is used to develop the model and save new versions of persisted states.
+
+`/templates` holds the html templates for the application.
+
