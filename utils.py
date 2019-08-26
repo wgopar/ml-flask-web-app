@@ -1,10 +1,39 @@
 from bs4 import BeautifulSoup
 from nltk.stem import WordNetLemmatizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from nltk.corpus import stopwords
+import pandas as pd
 import pickle
 import string
+import json
 import random
 import os
+
+
+def load_data(raw=None):
+    """ load data to development workspaces
+
+    Parameters
+    --------------
+        raw: (bool) if True, function returns cleaned dataset.
+        return (df) data frame of data and its labels
+    """
+    raw_data = []
+    with open('./data/cyber_data.json') as f:
+        for line in f:
+            raw_data.append(json.loads(line))
+
+    labels = [int(d['annotation']['label'][0]) for d in raw_data]
+    text = [d['content'] for d in raw_data]
+    data = {'text': text, 'label': labels}
+    df = pd.DataFrame(data, columns=['text', 'label'])  # raw data frame
+
+    if raw:
+        return df
+    else:
+        df.text = df.text.apply(clean_text)
+        return df
 
 
 def clean_text(text):
@@ -32,7 +61,6 @@ def persist_model(clf, description):
 
     Parameters
     -------------
-
         clf: (obj) scikit-learn trained model
         description: (str) model version/descriptor
     """
@@ -41,12 +69,33 @@ def persist_model(clf, description):
     print('Model Saved.')
 
 
+def build_encoder(text, count_vectorizer=None, tf_idf=None):
+    """ builds a text feature extractor given an iterable of text data
+
+    Parameters
+    ---------------
+        text: (list or series) of text data to transoform
+        count_vectorizer: (bool) If `True` transforms into BoW model
+        tf_idf: (bool) If `True` transforms into TF-IDF representation
+
+    """
+
+    if count_vectorizer:
+        vectorizer = CountVectorizer()
+        vectorizer.fit(text)
+        return vectorizer
+
+    if tf_idf:
+        transformer = TfidfVectorizer()
+        transformer.fit(text)
+        return transformer
+
+
 def persist_vectorizer(vectorizer, description):
     """ saves bag-of-words vectorizer in /model_assets folder with naming convention: vectorizer_[description].pkl
 
-    Attributes
+    Parameters
     -------------
-
         vectorizer: (obj) sklearn vectorizer object
         description: (str) vectorizer version/descriptor
     """
@@ -60,7 +109,6 @@ def sample_data(df, n):
 
     Parameters
     -------------
-
         df: pandas DataFrame to be sampled
          n: number of samples to generate
 

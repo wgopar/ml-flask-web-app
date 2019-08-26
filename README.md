@@ -34,14 +34,14 @@ Now we can deploy the web application via
 python app.py
 ~~~
 
-and navigate to `http://127.0.0.1:5000/` to see it live.
+and navigate to `http://127.0.0.1:5000/` to see it live. On this page, a user can then submit text into the text 
+field and that will be sent to the predictive model and determine if the text is most likely from a Cyber-Troll or not.  
 
 The application may then be terminated with the following commands.
 ~~~bash
 $ ^C           # exit flask application (ctrl-c)
 $ deactivate   # exit virtual environment
 ~~~
-
 
 ## Project Structure 
 
@@ -61,7 +61,6 @@ ml-flask-web-app
 ├── requirements.txt
 └── README.md
 ~~~
-
 
 ### detailed
 
