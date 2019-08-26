@@ -2,7 +2,7 @@
 
 This is a simple flask application that acts as an Internet Cyber Troll Detector. Using the
 Dataset for Detection of Cyber-Trolls ([here](https://dataturks.com/projects/abhishek.narayanan/Dataset%20for%20Detection%20of%20Cyber-Trolls/))
-a binary classifier was fitted to detect whether an online comment is is a `Cyber-Troll` or `Non Cyber-Troll`. This application
+a binary classifier was fitted to detect whether an online comment is a `Cyber-Troll` or `Non Cyber-Troll`. This application
 acts as an interface to allow any user to submit new queries to this model. 
   
 
