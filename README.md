@@ -5,6 +5,7 @@ Dataset for Detection of Cyber-Trolls ([here](https://dataturks.com/projects/abh
 a binary classifier was fitted to detect whether an online comment is a `Cyber-Troll` or `Non Cyber-Troll`. This application
 acts as an interface to allow any user to submit new queries to this model. 
   
+The model development notebook is located [here](https://github.com/wgopar/ml-flask-web-app/blob/master/model_dev/model_dev.ipynb).
 
 ## Installation
 
