@@ -35,7 +35,8 @@ python app.py
 ~~~
 
 and navigate to `http://127.0.0.1:5000/` to see it live. On this page, a user can then submit text into the text 
-field and that will be sent to the predictive model and determine if the text is most likely from a Cyber-Troll or not.  
+field and receive predictions from the trained model and determine if the text most likely came from a `Cyber Troll` or 
+`Non Cyber-Troll`.
 
 The application may then be terminated with the following commands.
 ~~~bash
@@ -67,6 +68,20 @@ ml-flask-web-app
 `/model_assets` is used to store persisted states of the predictive model and learned feature extractors from scikit-learn. 
 
 `/model_dev` is used as the model development playground where an `.ipynb` is used to develop the model and save new versions of persisted states.
+
+Storing new persisted states of the model can be done within the jupyter notebook. As an example, within `model_dev.ipynb`
+I can create a new model/retrain and include in into the `./model_assets` folder when I am satisfied. A simple example:
+
+~~~~python
+import utils
+
+clf = LogisticRegression()
+clf.fit(X_train, y_train)
+utils.persist_model(clf, description='clf_v.0.0')  # creates clf_v.0.0.pkl in /model_assets folder
+~~~~
+
+Selecting the version of models to use during run time is chosen within the POST request function inside
+in `app.py`.
 
 `/templates` holds the html templates for the application.
 
