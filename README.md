@@ -1,10 +1,16 @@
 # ml-flask-web-app 
 
-This is a simple flask application that acts as an Internet Cyber Troll Detector. Using the
-Dataset for Detection of Cyber-Trolls ([here](https://dataturks.com/projects/abhishek.narayanan/Dataset%20for%20Detection%20of%20Cyber-Trolls/))
-a binary classifier was fitted to detect whether an online comment is a `Cyber-Troll` or `Non Cyber-Troll`. This application
-acts as an interface to allow any user to submit new queries to this model. 
-  
+This is a web application designed to show the project structure for a machine learning model deployed using flask. This project features a machine learning model that has been trained to detect whether or not an online comment is a `Cyber-Troll` or `Non Cyber-Troll`. This application acts as an interface for a user to submit new queries. The machine learning model was built using various features of scikit learn:
+
+* Support Vector Machine (SVM)
+* Bag-of-Words text representation (BoW)
+* Grid Search + Cross Validation
+
+Each of these components are developed within the project in an offline setting inside `/model_dev`. The SVM and BoW models will still be needed in a production or testing setting in order to be able to predict user-submitted queries, so they can be serialized via python's pickle functionality and stored within the `/model_assets` folder. 
+
+In order to detect whether or not an online comment is from a cyber troll, you can deploy this application locally and submit queries to the machine learning model to recieve predictions through a simple user interface. The model was trained using the
+Dataset for Detection of Cyber-Trolls ([see here])(https://dataturks.com/projects/abhishek.narayanan/Dataset%20for%20Detection%20of%20Cyber-Trolls/))
+
 The model development notebook is located [here](https://github.com/wgopar/ml-flask-web-app/blob/master/model_dev/model_dev.ipynb).
 
 ## Installation
