@@ -13,6 +13,8 @@ Dataset for Detection of Cyber-Trolls ([see here](https://dataturks.com/projects
 
 The model development notebook is located [here](https://github.com/wgopar/ml-flask-web-app/blob/master/model_dev/model_dev.ipynb).
 
+Note that this project is still *in progress*
+
 ## Installation
 
 First clone the repo locally.
