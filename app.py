@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, url_for
 from utils import clean_text
 import pickle
 import time
@@ -15,7 +15,7 @@ model_path = os.path.join(os.getcwd(), 'model_assets', MODEL_VERSION)
 vectorizer = pickle.load(open(vectorizer_path, 'rb'))
 model = pickle.load(open(model_path, 'rb'))
 
-
+# TODO: add versioning to url
 @app.route('/', methods=['GET', 'POST'])
 def predict():
     """ Main webpage with user input through form and prediction displayed
@@ -35,7 +35,7 @@ def predict():
     if request.method == 'GET':
         return render_template('index.html')
 
-
+# TODO: add versioning to api
 @app.route('/predict', methods=['POST'])
 def predict_api():
     """ endpoint for model queries (non gui)

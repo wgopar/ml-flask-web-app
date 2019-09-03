@@ -1,9 +1,33 @@
-<h1>Welcome to the Cyber-Troll Prediction Service</h1>
+<!DOCTYPE html>
+<html>
 
-<form method="POST">
-    <input name="text">
-    <input type="submit">
-</form>
+<body>
 
-{{ submission }}
-<h2>{{ text }}</h2>
+<div>
+<h1 align="center">Welcome to the Cyber-Troll Prediction Service</h1>
+</div>
+
+<div style="text-align:center">
+<img src="{{url_for('static', filename='troll-guy.png')}}" height="250" width="250">
+</div>
+
+<div style="width:700px;margin:0 auto;text-align:center">
+
+    This is an example of a machine learning model being deployed using Flask and
+    Scikit-Learn! You can interact with the machine learning model that was built
+    to predict whether or not an online comment is from a cyber troll. Enter a comment
+    below for a prediction!
+
+</div>
+
+<div>
+    <form align="center" method="POST">
+        <input style="width:400px" name="text">
+        <input type="submit">
+    </form>
+</div>
+
+<p align="center">{{ submission }}</p>
+<h2 align="center">{{ text }}</h2>
+</body>
+</html>
