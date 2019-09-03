@@ -45,7 +45,7 @@ and navigate to `http://127.0.0.1:5000/` to see it live. On this page, a user ca
 field and receive predictions from the trained model and determine if the text most likely came from a `Cyber Troll` or 
 `Non Cyber-Troll`.
 
-![Alt text]("/static/screen-shot-ui.png?raw=true "User Interface")
+![Screen shot](/static/screen-shot-ui.png "User Interface")
 
 
 The application may then be terminated with the following commands.
