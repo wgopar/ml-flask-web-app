@@ -11,7 +11,9 @@ Each of these components are developed within the project in an offline setting 
 In order to detect whether or not an online comment is from a cyber troll, you can deploy this application locally and submit queries to the machine learning model to recieve predictions through a simple user interface. The model was trained using the
 Dataset for Detection of Cyber-Trolls ([see here](https://dataturks.com/projects/abhishek.narayanan/Dataset%20for%20Detection%20of%20Cyber-Trolls/))
 
-The model development notebook is located [here](https://github.com/wgopar/ml-flask-web-app/blob/master/model_dev/model_dev.ipynb).
+The model development notebook is located [here](https://github.com/wgopar/ml-flask-web-app/blob/master/model_dev/model_dev.ipynb). 
+
+You can also find a blog post that accompanies this repo [here](http://www.wmendozagopar.com/creating-and-deploying-a-machine-learning-project-with-flask.html#creating-and-deploying-a-machine-learning-project-with-flask).
 
 Note that this project is still *in progress*
 
